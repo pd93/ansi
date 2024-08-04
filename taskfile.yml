@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  examples:
+    description: "Run all examples"
+    cmds:
+      - go run ./examples/...
+
+  test:
+    description: "Run all tests"
+    cmds:
+      - go test ./...
+
+  bench:
+    description: "Run all benchmarks"
+    cmds:
+      - go test -bench=. ./...
