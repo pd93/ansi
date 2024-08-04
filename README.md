@@ -1,10 +1,11 @@
-<p style="width:100%;text-align:center;font-size:40px;margin-bottom:30px;letter-spacing:5px;font-family:consolas;">
-<span style="color:#ad7fa8;">\x1b</span><span style="color:#729fcf;">[</span><span style="color:#8ae234;">1;43</span><span style="color:#ef2929;">m</span><span style="font-weight:bold;background-color:#fce94f;color:#555753;">ANSI</span><span style="color:#ad7fa8;">\x1b</span><span style="color:#729fcf;">[</span><span style="color:#8ae234;">0</span><span style="color:#ef2929;">m</span>
-</p>
+<div align="center">
+  <img src="res/title.svg">
+</div>
 
-<p style="width:100%;text-align:center;margin-bottom:30px;font-style:italic;">
-A simple, lightweight Golang package for working with ANSI escape codes.
+<p align="center">
+  <i>A simple, lightweight Golang package for working with ANSI escape codes.</i>
 </p>
+<br>
 
 If you've ever worked on a CLI application before, you probably know the
 struggle of working with ANSI escape codes. Often, you just want to quickly
@@ -14,20 +15,18 @@ that does more than you need.
 
 The `ansi` package is extremely lightweight :feather: and has no external
 dependencies :package: It allows you to quickly apply styles to strings using
-**human-readable** style blocks. Because the styles are defined **inline**, there is no
-need to call a function for each style, making it easy to apply/reset multiple
-styles to a single string.
+**human-readable** style blocks. Because the styles are defined **inline**,
+there is no need to call a function for each style, making it easy to
+apply/reset multiple styles to a single string.
 
-With `ansi`, the mess at the top of this page becomes: <span style="font-size:20px;letter-spacing:2px;font-family:consolas;">
-<span style="color:#ad7fa8;">[</span><span style="color:#8ae234;">bold:bg-yellow</span><span style="color:#ad7fa8;">]</span><span style="font-weight:bold;background-color:#fce94f;color:#555753;">ANSI</span><span style="color:#ad7fa8;">[</span><span style="color:#ef2929;">/</span><span style="color:#ad7fa8;">]</span>
-</span>
+With `ansi`, the mess at the top of this page becomes: <img src="res/ansi.svg">
 
 ## Usage
 
 Strings are formatted using "style blocks". A style block is delimited by square
-brackets (`[]`) and contains a list of styles separated by colons. For
-example, the style block `[red:bold]` applies the red and bold styles to any
-text following the block.
+brackets (`[]`) and contains a list of styles separated by colons. For example,
+the style block `[red:bold]` applies the red and bold styles to any text
+following the block.
 
 Styles can be reset by using the corresponding reset code or by using the global
 reset (`[/]`) to reset all styles.
@@ -48,13 +47,14 @@ you can escape the block by prepending it with a backslash (`\`). For example,
 
 ```go
 // Note that we need to escape the escaping backslash otherwise it will be removed.
-ansi.Println("This is \\[red:bold]a normally formatted string because the style block is escaped\\[/]")
+ansi.Println("This is \\[red:bold]an escaped style block\\[/]")
 
 // We can avoid this in most situations by using a raw string (backticks) instead:
-ansi.Println(`This is \[red:bold]a normally formatted string because the style block is escaped\[/]`)
+ansi.Println(`This is \[red:bold]an escaped style block\[/]`)
 ```
 
-For more info, check out the [style reference](#style-reference) below or take a look at our [examples](./examples/main.go).
+For more info, check out the [style reference](#style-reference) below or take a
+look at our [examples](./examples/main.go).
 
 ## Style Reference
 
@@ -66,20 +66,21 @@ For more info, check out the [style reference](#style-reference) below or take a
 
 ### Formatting
 
-| Code           | ANSI Code | Example                                                                                                       |
-| -------------- | --------: | ------------------------------------------------------------------------------------------------------------- |
-| `bold`         |       `1` | <span style="font-weight:bold;">Sets the font weight to bold</span>                                           |
-| `faint`, `dim` |       `2` | <span style="color:#d3d7cf;">Sets the text brightness to its faint/dim variant</span> \*                      |
-| `italic`       |       `3` | <span style="font-style:italic;">Sets the font style to italic</span>                                         |
-| `underline`    |       `4` | <span style="text-decoration:underline;">Sets the text decoration to underline</span>                         |
-| `blink`        |       `5` | <span style="text-decoration:blink;">Sets the text to blink in and out</span>                                 |
-| `invert`       |       `7` | <span style="backdrop-filter:invert(1);filter:invert(1);">Inverts the foreground and background colors</span> |
-| `hidden`       |       `8` | <span style="opacity:0;">Sets the text to be hidden</span>                                                    |
-| `strike`       |       `9` | <span style="text-decoration:line-through;">Sets the text decoration to line-through</span>                   |
+| Code           | ANSI Code | Description                                          |
+| -------------- | --------: | ---------------------------------------------------- |
+| `bold`         |       `1` | Sets the font weight to bold                         |
+| `faint`, `dim` |       `2` | Sets the text brightness to its faint/dim variant \* |
+| `italic`       |       `3` | Sets the font style to italic                        |
+| `underline`    |       `4` | Sets the text decoration to underline                |
+| `blink`        |       `5` | Sets the text to blink in and out                    |
+| `invert`       |       `7` | Inverts the foreground and background colors</span>  |
+| `hidden`       |       `8` | Sets the text to be hidden                           |
+| `strike`       |       `9` | Sets the text decoration to line-through             |
 
-> \* `faint` and `dim` do not work when using 8-bit (256) or 24-bit (RGB) color modes.
+> \* `faint` and `dim` do not work when using 8-bit (256) or 24-bit (RGB) color
+> modes.
 
-| Code             | ANSI Code | Example                                 |
+| Code             | ANSI Code | Description                             |
 | ---------------- | --------: | --------------------------------------- |
 | `/bold`          |      `22` | Resets the font weight \*\*             |
 | `/faint`, `/dim` |      `22` | Resets the text brightness \*\*         |
@@ -95,35 +96,35 @@ For more info, check out the [style reference](#style-reference) below or take a
 
 ### Foreground Colors
 
-| Code      |    ANSI Code | Reset Code                                                                                                                                                                     |
-| --------- | -----------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `black`   |         `30` | <span style="color:#555753;">Sets the text foreground to black</span>                                                                                                          |
-| `red`     |         `31` | <span style="color:#ef2929;">Sets the text foreground to red</span>                                                                                                            |
-| `green`   |         `32` | <span style="color:#8ae234;">Sets the text foreground to green</span>                                                                                                          |
-| `yellow`  |         `33` | <span style="color:#fce94f;">Sets the text foreground to yellow</span>                                                                                                         |
-| `blue`    |         `34` | <span style="color:#729fcf;">Sets the text foreground to blue</span>                                                                                                           |
-| `magenta` |         `35` | <span style="color:#ad7fa8;">Sets the text foreground to magenta</span>                                                                                                        |
-| `cyan`    |         `36` | <span style="color:#34e2e2;">Sets the text foreground to cyan</span>                                                                                                           |
-| `white`   |         `37` | <span style="color:#eeeeec;">Sets the text foreground to white</span>                                                                                                          |
-| `R,G,B`   | `38;2;R;G;B` | Sets the text foreground to the given [24-bit (<span style="color:#ef2929;">R</span><span style="color:#8ae234;">G</span><span style="color:#729fcf;">B</span>) color][24-bit] |
-| `N`       |     `38;5;N` | Sets the text foreground to the given [8-bit (256) color][8-bit]                                                                                                               |
-| `/fg`     |         `39` | <span style="color:auto;">Resets the text foreground to the default color</span>                                                                                               |
+| Code      |    ANSI Code | Description                                                        |
+| --------- | -----------: | ------------------------------------------------------------------ |
+| `black`   |         `30` | Sets the text foreground to black                                  |
+| `red`     |         `31` | Sets the text foreground to red                                    |
+| `green`   |         `32` | Sets the text foreground to green                                  |
+| `yellow`  |         `33` | Sets the text foreground to yellow                                 |
+| `blue`    |         `34` | Sets the text foreground to blue                                   |
+| `magenta` |         `35` | Sets the text foreground to magenta                                |
+| `cyan`    |         `36` | Sets the text foreground to cyan                                   |
+| `white`   |         `37` | Sets the text foreground to white                                  |
+| `R,G,B`   | `38;2;R;G;B` | Sets the text foreground to the given [24-bit (RGB) color][24-bit] |
+| `N`       |     `38;5;N` | Sets the text foreground to the given [8-bit (256) color][8-bit]   |
+| `/fg`     |         `39` | Resets the text foreground to the default color                    |
 
 ### Background Colors
 
-| Code         |    ANSI Code | Reset Code                                                                                                                                                                     |
-| ------------ | -----------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `bg-black`   |         `40` | <span style="background-color:#555753;">Sets the text background to black</span>                                                                                               |
-| `bg-red`     |         `41` | <span style="background-color:#ef2929;">Sets the text background to red</span>                                                                                                 |
-| `bg-green`   |         `42` | <span style="background-color:#8ae234;color:#555753;">Sets the text background to green</span>                                                                                 |
-| `bg-yellow`  |         `43` | <span style="background-color:#fce94f;color:#555753;">Sets the text background to yellow</span>                                                                                |
-| `bg-blue`    |         `44` | <span style="background-color:#729fcf;">Sets the text background to blue</span>                                                                                                |
-| `bg-magenta` |         `45` | <span style="background-color:#ad7fa8;">Sets the text background to magenta</span>                                                                                             |
-| `bg-cyan`    |         `46` | <span style="background-color:#34e2e2;color:#555753;">Sets the text background to cyan</span>                                                                                  |
-| `bg-white`   |         `47` | <span style="background-color:#eeeeec;color:#555753;">Sets the text background to white</span>                                                                                 |
-| `bg-R,G,B`   | `48;2;R;G;B` | Sets the text background to the given [24-bit (<span style="color:#ef2929;">R</span><span style="color:#8ae234;">G</span><span style="color:#729fcf;">B</span>) color][24-bit] |
-| `bg-N`       |     `48;5;N` | Sets the text background to the given [8-bit (256) color][8-bit]                                                                                                               |
-| `/bg`        |         `49` | <span style="background-color:auto;">Resets the text background to the default color</span>                                                                                    |
+| Code         |    ANSI Code | Description                                                        |
+| ------------ | -----------: | ------------------------------------------------------------------ |
+| `bg-black`   |         `40` | Sets the text background to black                                  |
+| `bg-red`     |         `41` | Sets the text background to red                                    |
+| `bg-green`   |         `42` | Sets the text background to green                                  |
+| `bg-yellow`  |         `43` | Sets the text background to yellow                                 |
+| `bg-blue`    |         `44` | Sets the text background to blue                                   |
+| `bg-magenta` |         `45` | Sets the text background to magenta                                |
+| `bg-cyan`    |         `46` | Sets the text background to cyan                                   |
+| `bg-white`   |         `47` | Sets the text background to white                                  |
+| `bg-R,G,B`   | `48;2;R;G;B` | Sets the text background to the given [24-bit (RGB) color][24-bit] |
+| `bg-N`       |     `48;5;N` | Sets the text background to the given [8-bit (256) color][8-bit]   |
+| `/bg`        |         `49` | Resets the text background to the default color                    |
 
 [8-bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 [24-bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit

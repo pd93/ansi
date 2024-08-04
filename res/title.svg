@@ -1,0 +1,43 @@
+<svg fill="none" viewBox="0 0 600 90" width="600" height="90" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .container {
+          width: 100%;
+          text-align: center;
+          font-size: 30px;
+          letter-spacing: 5px;
+          font-family: consolas;
+        }
+
+        .escape {
+          color: #ad7fa8;
+        }
+
+        .bracket {
+          color: #729fcf;
+        }
+
+        .style {
+          color: #8ae234;
+        }
+
+        .lastByte {
+          color: #ef2929;
+        }
+
+        .text {
+          font-weight: bold;
+          background-color: #fce94f;
+          color: #555753;
+        }
+      </style>
+
+      <p class="container">
+        <span class="escape">\x1b</span><span class="bracket">[</span><span class="style">1;43</span><span
+          class="lastByte">m</span><span class="text">ANSI</span><span class="escape">\x1b</span><span
+          class="bracket">[</span><span class="style">0</span><span class="lastByte">m</span>
+      </p>
+    </div>
+  </foreignObject>
+</svg>
