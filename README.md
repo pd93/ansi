@@ -2,9 +2,21 @@
   <img src="res/title.svg">
 </div>
 
-<p align="center">
-  <i>A simple, lightweight Golang package for working with ANSI escape codes.</i>
-</p>
+<div align="center">
+  <i>A simple, lightweight Golang package for working with ANSI escape codes.</i><br>
+  <br>
+</div>
+
+<div align="center">
+
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/pd93/ansi?style=flat-square)
+[![Go Doc](http://img.shields.io/badge/pkg.go.dev-ansi-3a7a9a?style=flat-square)](https://pkg.go.dev/github.com/pd93/ansi)
+[![GitHub Release](https://img.shields.io/github/v/release/pd93/ansi?style=flat-square)](https://github.com/pd93/ansi/releases)
+[![GitHub License](https://img.shields.io/github/license/pd93/ansi?style=flat-square)](https://github.com/pd93/ansi/blob/main/LICENSE)
+![GitHub Repo stars](https://img.shields.io/github/stars/pd93/ansi?style=flat-square)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/pd93?style=flat-square)](https://github.com/sponsors/pd93)
+
+</div>
 <br>
 
 If you've ever worked on a CLI application before, you probably know the

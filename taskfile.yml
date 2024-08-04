@@ -6,6 +6,11 @@ tasks:
     cmds:
       - go run ./examples/...
 
+  lint:
+    description: "Run linter"
+    cmds:
+      - golangci-lint run
+
   test:
     description: "Run all tests"
     cmds:
